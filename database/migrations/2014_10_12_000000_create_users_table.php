@@ -17,7 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->date('date');
             $table->string('client_number');
-            $table->string('service');            
+            $table->string('service');
+            $table->boolean('subscribed')->default('1');            
             $table->timestamps();
         });
     }
