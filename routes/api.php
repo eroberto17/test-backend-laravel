@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('usuarios', 'UserController');
+Route::resource('cobros', 'CollectionController');
+
+Route::get('/usuarios/desinscribir/{id}', 'UserController@desinscribir');

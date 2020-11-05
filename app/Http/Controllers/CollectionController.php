@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Collection;
 
-class UserController extends Controller
+class CollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::get();
+        return Collection::get();
     }
 
     /**
@@ -35,16 +35,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
+        $collection = new Collection;
         
-        $user->date = $request->date;
-        $user->client_number = $request->client_number;
-        $user->service = $request->service;
-
-        $user->save();
-
-        saveCobros($request);
-
+        $collection->date = $request->date;
+        $collection->client_number = $request->client_number;
+        $collection->service = $request->service;
+        $collection->price = $request->price;
+        
+        $collection->save();
     }
 
     /**
@@ -55,7 +53,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::where('id', $id)->get();
+        return Collection::where('id', $id)->get();
     }
 
     /**
@@ -90,14 +88,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function desinscribir($id)
-    {   
-        $user = User::find($id);
-        $user->subscribed = '0';
-        $user->save();
-        
-        return User::where('id', $id)->get();
     }
 }
