@@ -89,4 +89,11 @@ class CollectionController extends Controller
     {
         //
     }
+
+    public function notificacion($id)
+    {   
+        $collection = Collection::find($id);
+        
+        return 'Notificación de cobro - Cliente: '.$collection->client_number;
+    }
 }

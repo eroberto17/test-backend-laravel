@@ -22,3 +22,4 @@ Route::resource('usuarios', 'UserController');
 Route::resource('cobros', 'CollectionController');
 
 Route::get('/usuarios/desinscribir/{id}', 'UserController@desinscribir');
+Route::get('/cobros/notificacion/{id}', 'CollectionController@notificacion');
